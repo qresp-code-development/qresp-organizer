@@ -15,7 +15,7 @@ setup(
     entry_points = {
         "console_scripts": ['qresp_config = qresp_config.qresp_config:main']
         },
-	version='0.3',
+	version='1.0.0',
     description = "Python command line application to configure qresp.",
     author = "Aditya Tanikanti",
 	author_email='datadev@lists.uchicago.edu',
