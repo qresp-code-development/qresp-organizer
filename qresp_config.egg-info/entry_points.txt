@@ -1,0 +1,3 @@
+[console_scripts]
+qresp_config = qresp_config.qresp_config:main
+

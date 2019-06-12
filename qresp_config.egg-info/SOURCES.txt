@@ -1,0 +1,12 @@
+setup.py
+qresp_config/__init__.py
+qresp_config/__main__.py
+qresp_config/qresp_config.py
+qresp_config.egg-info/PKG-INFO
+qresp_config.egg-info/SOURCES.txt
+qresp_config.egg-info/dependency_links.txt
+qresp_config.egg-info/entry_points.txt
+qresp_config.egg-info/requires.txt
+qresp_config.egg-info/top_level.txt
+qresp_config/scripts/__init__.py
+qresp_config/scripts/docopt.py

@@ -1,0 +1,12 @@
+Metadata-Version: 1.2
+Name: qresp-config
+Version: 0.3
+Summary: Python command line application to configure qresp.
+Home-page: UNKNOWN
+Author: Aditya Tanikanti
+Author-email: datadev@lists.uchicago.edu
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.0
