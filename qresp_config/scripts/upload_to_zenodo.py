@@ -44,6 +44,7 @@ class UploadToZenodo:
                                                                                           deposition_id=self.deposition_id),
                         params=self.params,
                         data=data, files=files)
+                    os.rename(newfilepath, filepath)
                     if resp.status_code >= 400:
                         sys.exit(resp.json())
         print("Uploaded images to deposition id ", self.deposition_id)

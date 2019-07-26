@@ -80,7 +80,7 @@ def main():
 			token = str(args.get('<token>'))
 			if not token:
 				sys.exit("Please assign all scopes and generate a new token at https://zenodo.org/account/settings/applications/tokens/new/")
-			checkIfZenodo = check_services("To upload to zenodo you would need to provide a title, description and a list of authors for your dataset. All Image files would be renamed with a path appended to it as well. Would you like to continue? (Y/N) ","zenodo")
+			checkIfZenodo = check_services("To upload to zenodo you would need to provide a title, description and a list of authors for your dataset. Would you like to continue? (Y/N) ","zenodo")
 			if checkIfZenodo == "Y":
 				title = request_metadata("Please enter a title for your dataset ")
 				description = request_metadata("Please describe your dataset ")
