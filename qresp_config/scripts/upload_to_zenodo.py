@@ -7,10 +7,13 @@ import sys
 class UploadToZenodo:
     """ Upload Files to Zenodo
     """
-    def __init__(self, ACCESS_TOKEN, path, metadata):
+    def __init__(self, ACCESS_TOKEN, path, metadata, sandbox=False):
         self.headers = {"Content-Type": "application/json"}
         self.params = {'access_token': ACCESS_TOKEN}
-        self.base_url = "https://sandbox.zenodo.org"
+        if sandbox:
+            self.base_url = "https://sandbox.zenodo.org"
+        else:
+            self.base_url = "https://zenodo.org"
         self.deposition_id = self.generateDepositionId()
         self.acceptedExtentions = (".jpg", ".jpeg", ".png", ".gif", ".tiff", ".pdf", ".bmp", ".ico", ".svg")
         self.metadata = metadata

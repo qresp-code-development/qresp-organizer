@@ -20,24 +20,20 @@ $ cd qresp-organizer
 $ python setup.py install --user
 ```
 
-For latest
-
-```bash
-$ git clone --single-branch --branch feature_upload_zenodo https://github.com/qresp-code-development/qresp-organizer.git
-$ cd qresp-organizer
-$ python setup.py install --user
-```
-
 ## Usage
 
 Qresp organizer aids in 
 
 a) Uploading your paper content to [Zenodo](https://www.zenodo.org/). To upload your paper,
 * Login to [Zenodo](https://www.zenodo.org/login/?next=%2F) or [Zenodo sandbox](https://sandbox.zenodo.org/login/?next=%2F).
-* Generate new token at [applications page](https://www.zenodo.org/account/settings/applications/). Create a personal token with all permissions and copy the token id.
+* Generate new token at [applications page](https://www.zenodo.org/account/settings/applications/). Create a personal token with all permissions checked and copy the token id. Use [sandbox applications page](https://www.ssandbox.zenodo.org/account/settings/applications/) alternatively.
 * Run
 ```bash
-$ qresp_config zenodo upload <folder_name> <token>
+$ qresp_config zenodo upload <folder_name> <token> 
+```
+* For sandbox,
+```bash
+$ qresp_config zenodo upload <folder_name> <token> --sandbox 
 ```
 * Follow the prompts to upload content to zenodo.
 
@@ -45,8 +41,9 @@ Or
 
 b) Creating a folder/paper collection in a centralized server to host datasets for many users
 ```bash
-$ qresp_config collection <folder_name> [<path>]
+$ qresp_config collection <paper_collection> [<path>]
 ```
+* Follow the prompts to create a qresp.ini file which will be accessed by curator to view user priveleges. 
 
 Or
 
@@ -55,7 +52,7 @@ c) Create a project skeleton for qresp within a paper collection
 $ cd <paper_collection> 
 $ qresp_config paper <paper_name> [<path>] 
 ``` 
-
+* This will enable git as a service for the user to version control their data.
 
 
 

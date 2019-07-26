@@ -6,7 +6,7 @@ Usage:
   qresp_config collection <folder_name> [<path>]
   qresp_config paper <paper_name> [<path>]
   qresp_config info <paper_name> [<path>]
-  qresp_config zenodo upload <paper_name> <token> [<path>]
+  qresp_config zenodo upload <paper_name> <token> [<path>] [--sandbox]
   qresp_config --version
 
 Options:
@@ -20,6 +20,7 @@ Options:
   --folder_name    Name of the paper collection.
   --token          Personal token generated from zenodo. Login to Zenodo to create an access token at https://zenodo.org/account/settings/applications/tokens/new/
   --zenodo upload  Initializes zenodo by creating metadata and registering token and uploads the paper to zenodo
+  --sandbox        Uses sandbox url to upload to data
 """
 from qresp_config.scripts.docopt import docopt
 from qresp_config.scripts.util import *
@@ -70,6 +71,7 @@ def main():
 		print("Created file qresp.ini")
 	elif args.get('zenodo'):
 		if args.get('upload'):
+			sandbox = False
 			paper_name = str(args.get('<paper_name>'))
 			if args.get('<path>'):
 				paper_name = str(args.get('<path>')) + "/" + paper_name
@@ -81,13 +83,15 @@ def main():
 			if not token:
 				sys.exit("Please assign all scopes and generate a new token at https://zenodo.org/account/settings/applications/tokens/new/")
 			checkIfZenodo = check_services("To upload to zenodo you would need to provide a title, description and a list of authors for your dataset. Would you like to continue? (Y/N) ","zenodo")
+			if args.get('--sandbox'):
+				sandbox = True
 			if checkIfZenodo == "Y":
 				title = request_metadata("Please enter a title for your dataset ")
 				description = request_metadata("Please describe your dataset ")
 				authorList = create_authors_list("Please enter the author and his/her affiliation as comma seperated values. For e.g. John Doe, University of Chicago ")
 				metadata = create_metadata(title,description,authorList)
 				print("Uploading Files. Please wait ....")
-				uploadToZenodo = UploadToZenodo(token, paper_name, metadata)
+				uploadToZenodo = UploadToZenodo(token, paper_name, metadata, sandbox)
 				uploadToZenodo.uploadImagesToZenodo()
 				uploadToZenodo.uploadZipFileToZenodo()
 				uploadToZenodo.uploadMetadaFileToZenodo()
