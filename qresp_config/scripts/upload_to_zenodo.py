@@ -33,9 +33,12 @@ class UploadToZenodo:
         for r, d, f in os.walk(self.path):
             for file in f:
                 if file.lower().endswith(self.acceptedExtentions):
-                    data = {'filename': str(file)}
                     filepath = os.path.join(r, file)
-                    files = {'file': open(str(filepath), 'rb')}
+                    newfile = os.path.split(r)[1]+"__"+file
+                    newfilepath = os.path.join(r, newfile)
+                    os.rename(filepath,newfilepath)
+                    files = {'file': open(str(newfilepath), 'rb')}
+                    data = {'filename': str(newfile)}
                     resp = requests.post(
                         '{base_url}/api/deposit/depositions/{deposition_id}/files'.format(base_url=self.base_url,
                                                                                           deposition_id=self.deposition_id),
