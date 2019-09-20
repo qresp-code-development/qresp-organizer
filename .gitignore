@@ -6,3 +6,5 @@ qresp_config.egg-info/
 qresp_config/__pycache__/
 qresp_config/__init__.pyc
 qresp_config/qresp.pyc
+qresp_config/scripts/__pycache__/
+qresp_config/scripts/__init__.pyc
